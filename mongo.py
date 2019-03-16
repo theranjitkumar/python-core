@@ -1,9 +1,14 @@
 import pymongo
+import json
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["test"]
 mycol = mydb["user"]
 
-x = mycol.find_one()
+data = []
 
-print(x)
+for x in mycol.find():
+    data.append(x)
+    # print(x)
+
+print(data)    
